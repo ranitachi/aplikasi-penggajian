@@ -9,7 +9,7 @@
             @include('pages.bank.data')
         </div>
         <div class="col-md-4">
-                @include('pages.bank.form')
+            @include('pages.bank.form')
         </div>
     </div>
 @endsection
