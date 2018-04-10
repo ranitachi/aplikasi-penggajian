@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRevisiTable extends Migration
+class CreateMasterKeluarga extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateRevisiTable extends Migration
      */
     public function up()
     {
-        Schema::create('revisi', function (Blueprint $table) {
+        Schema::create('master_pegawai_keluarga', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_dokumen');
-            $table->string('keterangan');
+            $table->string('nip');
+            $table->string('nama_keluarga')->nullable();
+            $table->string('status_keluarga')->nullable();
+            $table->integer('flag')->default(1);
             $table->timestamps();
-            $table->softdeletes();
+            $table->softDeletes();
         });
     }
 
@@ -29,6 +31,7 @@ class CreateRevisiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('revisi');
+        Schema::dropIfExists('master_pegawai_keluarga');
+
     }
 }
