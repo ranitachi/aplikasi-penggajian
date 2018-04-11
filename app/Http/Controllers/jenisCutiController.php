@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\dataBank;
+use App\jenisCuti;
 
-class dataBankController extends Controller
+class jenisCutiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class dataBankController extends Controller
      */
     public function index()
     {
-        $data = dataBank::all();
-        return view('pages.bank.index',compact('data'));
+        $data = jenisCuti::all();
+        return view('pages.jenisCuti.index',compact('data'));
     }
 
     /**
@@ -25,7 +25,7 @@ class dataBankController extends Controller
      */
     public function create()
     {
-        return view('pages.bank.index');
+        return view('pages.jenisCuti.index');
     }
 
     /**
@@ -36,12 +36,21 @@ class dataBankController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new dataBank();
-       $data->nama_bank = $request->namaBank;
-       $data->cabang = $request->cabang;
+        $data = new jenisCuti();
+       $data->jenis_cuti = $request->jenisCuti;
+       $data->jumlah_hari = $request->jumlahHari;
+       $data->tanggal_mulai = $request->tanggalMulai;
+       $data->tanggal_akhir = $request->tanggalAkhir;
+       $data->desc = $request->desc;
+       $berkas = $request->file('berkas');
+        $ext = $berkas->getClientOriginalExtension();
+        $newName = rand(100000,1001238912).".".$ext;
+        $berkas->move('uploads/file',$newName);
+        $data->berkas = $newName;
+       $data->nip = $request->nip;
        $data->flag = $request->flag;
        $data->save();
-       return redirect()->route('data-bank.index')->with('alert-success','Berhasil Menambahkan Data Bank!');
+       return redirect()->route('jenis-cuti.index')->with('alert-success','Berhasil Menambahkan Jenis Cuti!');
     }
 
     /**
@@ -52,7 +61,7 @@ class dataBankController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -63,7 +72,7 @@ class dataBankController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.bank.index');
+        //
     }
 
     /**
@@ -75,12 +84,7 @@ class dataBankController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = dataBank::where('id',$id)->get();
-       $data->nama_bank = $request->namaBank;
-       $data->cabang = $request->cabang;
-       $data->flag = $request->kategori;
-       $data->save();
-       return redirect()->route('data-bank.index')->with('alert-success','Berhasil Menambahkan Kritik & Saran Anda!');
+        //
     }
 
     /**

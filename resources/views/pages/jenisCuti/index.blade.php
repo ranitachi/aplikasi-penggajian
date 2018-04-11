@@ -11,11 +11,8 @@
 	</div>
 	@endif
     <div class="row">
-        <div class="col-md-8">
-            @include('pages.bank.data')
-        </div>
-        <div class="col-md-4">
-            @include('pages.bank.form')
+        <div class="col-md-12">
+            @include('pages.jenisCuti.data')
         </div>
     </div>
 </div>

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\dataBank;
+use App\jenisPotongan;
 
-class dataBankController extends Controller
+class jenisPotonganController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class dataBankController extends Controller
      */
     public function index()
     {
-        $data = dataBank::all();
-        return view('pages.bank.index',compact('data'));
+        $data = jenisPotongan::all();
+        return view('pages.jenisPotongan.index',compact('data'));
     }
 
     /**
@@ -25,7 +25,7 @@ class dataBankController extends Controller
      */
     public function create()
     {
-        return view('pages.bank.index');
+        return view('pages.jenisPotongan.index');
     }
 
     /**
@@ -36,12 +36,14 @@ class dataBankController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new dataBank();
-       $data->nama_bank = $request->namaBank;
-       $data->cabang = $request->cabang;
+         $data = new jenisPotongan();
+       $data->nip = $request->nip;
+       $data->desc = $request->desc;
+       $data->nominal = $request->nominal;
+       $data->tgl_ambil = $request->tglAmbil;
        $data->flag = $request->flag;
        $data->save();
-       return redirect()->route('data-bank.index')->with('alert-success','Berhasil Menambahkan Data Bank!');
+       return redirect()->route('jenis-potongan.index')->with('alert-success','Berhasil Menambahkan Jenis Potongan!');
     }
 
     /**
@@ -52,7 +54,7 @@ class dataBankController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -63,7 +65,7 @@ class dataBankController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.bank.index');
+        //
     }
 
     /**
@@ -75,12 +77,7 @@ class dataBankController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = dataBank::where('id',$id)->get();
-       $data->nama_bank = $request->namaBank;
-       $data->cabang = $request->cabang;
-       $data->flag = $request->kategori;
-       $data->save();
-       return redirect()->route('data-bank.index')->with('alert-success','Berhasil Menambahkan Kritik & Saran Anda!');
+        //
     }
 
     /**

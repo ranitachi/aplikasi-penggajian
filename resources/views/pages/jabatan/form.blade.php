@@ -1,15 +1,15 @@
 <div class="container-fluid">
-		<h2>Input Data Bank</h2>
+		<h2>Input Data Jabatan</h2>
 		<hr>
-		<form action="{{ route('data-bank.store') }}" method="POST" >
+		<form action="{{ route('jabatan.store') }}" method="POST" >
 			{{ csrf_field() }}
 			<div class="form-group">
-				<label for="namaBank">Nama Bank</label>
-				<input type="text" class="form-control" name="namaBank" required="required">
+				<label for="namaJabatan">Nama Jabatan</label>
+				<input type="text" class="form-control" name="namaJabatan" required="required">
 			</div>
 			<div class="form-group">
-				<label for="cabang">Cabang</label>
-				<input type="text" class="form-control" name="cabang" required="required">
+				<label for="nominal">Nominal</label>
+				<input type="text" class="form-control" name="nominal" required="required">
 			</div>
 			<div class="form-group">
                 <label for="flag">Flag</label>

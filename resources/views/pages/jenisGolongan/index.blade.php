@@ -12,10 +12,10 @@
 	@endif
     <div class="row">
         <div class="col-md-8">
-            @include('pages.bank.data')
+            @include('pages.jenisGolongan.data')
         </div>
         <div class="col-md-4">
-            @include('pages.bank.form')
+            @include('pages.jenisGolongan.form')
         </div>
     </div>
 </div>

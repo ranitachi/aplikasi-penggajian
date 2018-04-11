@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\dataBank;
+use App\komponenGaji;
 
-class dataBankController extends Controller
+class komponenGajiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class dataBankController extends Controller
      */
     public function index()
     {
-        $data = dataBank::all();
-        return view('pages.bank.index',compact('data'));
+        $data = komponenGaji::all();
+        return view('pages.komponenGaji.index',compact('data'));
     }
 
     /**
@@ -25,7 +25,7 @@ class dataBankController extends Controller
      */
     public function create()
     {
-        return view('pages.bank.index');
+        return view('pages.komponenGaji.index');
     }
 
     /**
@@ -36,12 +36,13 @@ class dataBankController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new dataBank();
-       $data->nama_bank = $request->namaBank;
-       $data->cabang = $request->cabang;
+        $data = new komponenGaji();
+       $data->id_komponen = $request->idKomponen;
+       $data->id_batch_gaji = $request->idBatchGaji;
+       $data->nominal = $request->nominal;
        $data->flag = $request->flag;
        $data->save();
-       return redirect()->route('data-bank.index')->with('alert-success','Berhasil Menambahkan Data Bank!');
+       return redirect()->route('komponen-gaji.index')->with('alert-success','Berhasil Menambahkan Komponen Gaji!');
     }
 
     /**
@@ -52,7 +53,7 @@ class dataBankController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -63,7 +64,7 @@ class dataBankController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.bank.index');
+        //
     }
 
     /**
@@ -75,12 +76,7 @@ class dataBankController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = dataBank::where('id',$id)->get();
-       $data->nama_bank = $request->namaBank;
-       $data->cabang = $request->cabang;
-       $data->flag = $request->kategori;
-       $data->save();
-       return redirect()->route('data-bank.index')->with('alert-success','Berhasil Menambahkan Kritik & Saran Anda!');
+        //
     }
 
     /**

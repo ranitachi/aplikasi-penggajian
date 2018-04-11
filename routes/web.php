@@ -19,3 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('data-bank', 'dataBankController');
+Route::resource('jenis-cuti', 'jenisCutiController');
+Route::get('tambah-data-cuti', function () {
+    return view('pages.jenisCuti.form');
+});
+Route::resource('jenis-golongan', 'jenisGolonganController');
+Route::resource('jabatan', 'dataJabatanController');
+Route::resource('jenis-potongan', 'jenisPotonganController');
+Route::resource('komponen-gaji', 'komponenGajiController');
