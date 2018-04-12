@@ -3,6 +3,7 @@
 		<hr>
 		<form action="{{ route('jabatan.store') }}" method="POST" >
 			{{ csrf_field() }}
+            {{ method_field('PUT') }}
 			<div class="form-group">
 				<label for="namaJabatan">Nama Jabatan</label>
 				<input type="text" class="form-control" name="namaJabatan" required="required">

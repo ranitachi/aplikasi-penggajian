@@ -77,7 +77,15 @@ class jenisPotonganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ids = $request->idd;
+        $datas = jenisPotongan::where('id',$ids)->first();
+        $datas->nip = $request->nip;
+        $datas->desc = $request->desc;
+        $datas->nominal = $request->nominal;
+        $datas->tgl_ambil = $request->tglAmbil;
+        $datas->flag = $request->flag;
+        $datas->save();
+        return redirect()->route('jenis-potongan.index')->with('alert-success','Berhasil diUpdate Jenis Potongan!');
     }
 
     /**
@@ -88,6 +96,9 @@ class jenisPotonganController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $datas = jenisPotongan::where('id',$id)->first();
+        $datas->flag = 0;
+        $datas->save();
+        return redirect()->route('jenis-potongan.index')->with('alert-success','Berhasil diHapus Jenis Potongan!');
     }
 }

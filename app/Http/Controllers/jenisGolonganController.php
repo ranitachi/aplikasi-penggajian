@@ -75,7 +75,13 @@ class jenisGolonganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ids = $request->idgolongan;
+        $datas = jenisGolongan::where('id',$ids)->first();
+        $datas->nama_golongan = $request->namaGolongan;
+        $datas->nominal = $request->nominal;
+        $datas->flag = $request->flag;
+        $datas->save();
+        return redirect()->route('jenis-golongan.index')->with('alert-success','Berhasil diUpdate Jenis Golongan!');
     }
 
     /**
@@ -86,6 +92,9 @@ class jenisGolonganController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $datas = jenisGolongan::where('id',$id)->first();
+        $datas->flag = 0;
+        $datas->save();
+        return redirect()->route('jenis-golongan.index')->with('alert-success','Berhasil diHapus Jenis Golongan!');
     }
 }

@@ -12,10 +12,17 @@ class dataBankController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id="")
     {
         $data = dataBank::all();
-        return view('pages.bank.index',compact('data'));
+        if(!empty($id)){
+            $dataUpdate = dataBank::where('id', $id)->first();
+            return view('pages.bank.index',compact('data','dataUpdate'));
+        }else{
+            $dataUpdate = "";
+            return view('pages.bank.index',compact('data','dataUpdate'));
+        }
+
     }
 
     /**
@@ -61,9 +68,10 @@ class dataBankController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id="")
     {
-        return view('pages.bank.index');
+        $dataUpdate = dataBank::where('id', $id)->first();
+        return view('pages.bank.index',compact('dataUpdate',""));
     }
 
     /**
@@ -75,12 +83,13 @@ class dataBankController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = dataBank::where('id',$id)->get();
-       $data->nama_bank = $request->namaBank;
-       $data->cabang = $request->cabang;
-       $data->flag = $request->kategori;
-       $data->save();
-       return redirect()->route('data-bank.index')->with('alert-success','Berhasil Menambahkan Kritik & Saran Anda!');
+        $ids = $request->idbank;
+        $datas = dataBank::where('id', $ids)->first();
+        $datas->nama_bank = $request->namaBankupdate;
+        $datas->cabang = $request->cabangupdate;
+        $datas->flag = $request->flagupdate;
+        $datas->save();
+        return redirect()->route('data-bank.index')->with('alert-success','Berhasil Mengupdate Data Bank!');
     }
 
     /**
@@ -91,6 +100,9 @@ class dataBankController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = dataBank::where('id', $id)->first();
+        $data->flag = 0;
+        $data->save();
+        return redirect()->route('data-bank.index')->with('alert-success','Berhasil Mengahpus!');
     }
 }

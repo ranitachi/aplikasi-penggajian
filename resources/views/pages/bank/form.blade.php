@@ -3,7 +3,7 @@
 		<hr>
 		<form action="{{ route('data-bank.store') }}" method="POST" >
 			{{ csrf_field() }}
-			<div class="form-group">
+           <div class="form-group">
 				<label for="namaBank">Nama Bank</label>
 				<input type="text" class="form-control" name="namaBank" required="required">
 			</div>

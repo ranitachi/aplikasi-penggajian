@@ -76,7 +76,14 @@ class komponenGajiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ids = $request->idd;
+        $datas = komponenGaji::where('id',$ids)->first();
+        $datas->id_komponen = $request->idKomponen;
+        $datas->id_batch_gaji = $request->idBatchGaji;
+        $datas->nominal = $request->nominal;
+        $datas->flag = $request->flag;
+        $datas->save();
+        return redirect()->route('komponen-gaji.index')->with('alert-success','Berhasil diUpdate Komponen Gaji!');
     }
 
     /**
@@ -87,6 +94,9 @@ class komponenGajiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $datas = komponenGaji::where('id',$id)->first();
+        $datas->flag = 0;
+        $datas->save();
+        return redirect()->route('komponen-gaji.index')->with('alert-success','Berhasil diHapus Komponen Gaji!');
     }
 }

@@ -84,7 +84,17 @@ class jenisCutiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ids = $request->idcuti;
+        $datas = jenisCuti::where('id',$ids)->first();
+        $datas->jenis_cuti = $request->jenisCuti;
+        $datas->jumlah_hari = $request->jumlahHari;
+        $datas->tanggal_mulai = $request->tanggalMulai;
+        $datas->tanggal_akhir = $request->tanggalAkhir;
+        $datas->desc = $request->desc;
+        $datas->nip = $request->nip;
+        $datas->flag = $request->flag;
+        $datas->save();
+        return redirect()->route('jenis-cuti.index')->with('alert-success','Berhasil diUpdate Jenis Cuti!');
     }
 
     /**
@@ -95,6 +105,9 @@ class jenisCutiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $datas = jenisCuti::where('id', $id)->first();
+        $datas->flag = 0;
+        $datas->save();
+        return redirect()->route('jenis-cuti.index')->with('alert-success','Berhasil Menghapus Jenis Cuti!');
     }
 }

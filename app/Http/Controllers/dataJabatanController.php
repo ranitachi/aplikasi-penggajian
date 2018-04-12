@@ -75,7 +75,13 @@ class dataJabatanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ids =$request->idjabatan;
+        $datas = dataJabatan::where('id',$ids)->first();
+        $datas->nama_jabatan = $request->namaJabatan;
+        $datas->nominal = $request->nominal;
+        $datas->flag = $request->flag;
+        $datas->save();
+        return redirect()->route('jabatan.index')->with('alert-success','Berhasil diUpdate Data Jabatan!');
     }
 
     /**
@@ -86,6 +92,9 @@ class dataJabatanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = dataJabatan::where('id',$id)->first();
+        $data->flag = 0;
+        $data->save();
+        return redirect()->route('jabatan.index')->with('alert-success','Berhasil Menghapus Data Jabatan!');
     }
 }
