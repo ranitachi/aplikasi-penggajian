@@ -3,20 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\dataBank;
+use App\Model\DataBank;
 
 class dataBankController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index($id="")
     {
-        $data = dataBank::all();
+        $data = DataBank::all();
         if(!empty($id)){
-            $dataUpdate = dataBank::where('id', $id)->first();
+            $dataUpdate = DataBank::where('id', $id)->first();
             return view('pages.bank.index',compact('data','dataUpdate'));
         }else{
             $dataUpdate = "";
@@ -70,7 +65,7 @@ class dataBankController extends Controller
      */
     public function edit($id="")
     {
-        $dataUpdate = dataBank::where('id', $id)->first();
+        $dataUpdate = DataBank::where('id', $id)->first();
         return view('pages.bank.index',compact('dataUpdate',""));
     }
 
@@ -84,7 +79,7 @@ class dataBankController extends Controller
     public function update(Request $request, $id)
     {
         $ids = $request->idbank;
-        $datas = dataBank::where('id', $ids)->first();
+        $datas = DataBank::where('id', $ids)->first();
         $datas->nama_bank = $request->namaBankupdate;
         $datas->cabang = $request->cabangupdate;
         $datas->flag = $request->flagupdate;
@@ -100,9 +95,8 @@ class dataBankController extends Controller
      */
     public function destroy($id)
     {
-        $data = dataBank::where('id', $id)->first();
-        $data->flag = 0;
-        $data->save();
+        $data = DataBank::where('id', $id)->first();
+        $data->delete();
         return redirect()->route('data-bank.index')->with('alert-success','Berhasil Mengahpus!');
     }
 }
