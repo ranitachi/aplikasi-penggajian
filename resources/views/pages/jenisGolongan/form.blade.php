@@ -1,6 +1,15 @@
 <div class="container-fluid">
 		<h2>Input Data Golongan</h2>
 		<hr>
+		@if ($errors->any())
+	    <div class="alert alert-danger">
+	        <ul>
+	        @foreach ($errors->all() as $error)
+	            <li>{{ $error }}</li>
+	        @endforeach
+	        </ul>
+	    </div>
+	    @endif
 		<form action="{{ route('jenis-golongan.store') }}" method="POST" >
 			{{ csrf_field() }}
 			<div class="form-group">

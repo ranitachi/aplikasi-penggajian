@@ -36,6 +36,12 @@ class jenisGolonganController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'namaGolongan' => 'required|min:4',
+            'nominal' => 'required|min:4',
+            'flag' => 'required',
+        ]);
+
         $data = new jenisGolongan();
        $data->nama_golongan = $request->namaGolongan;
        $data->nominal = $request->nominal;

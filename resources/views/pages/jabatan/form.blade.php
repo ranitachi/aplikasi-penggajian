@@ -1,9 +1,17 @@
 <div class="container-fluid">
 		<h2>Input Data Jabatan</h2>
 		<hr>
+		@if ($errors->any())
+	    <div class="alert alert-danger">
+	        <ul>
+	        @foreach ($errors->all() as $error)
+	            <li>{{ $error }}</li>
+	        @endforeach
+	        </ul>
+	    </div>
+	    @endif
 		<form action="{{ route('jabatan.store') }}" method="POST" >
 			{{ csrf_field() }}
-            {{ method_field('PUT') }}
 			<div class="form-group">
 				<label for="namaJabatan">Nama Jabatan</label>
 				<input type="text" class="form-control" name="namaJabatan" required="required">

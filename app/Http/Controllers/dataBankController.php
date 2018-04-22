@@ -37,7 +37,12 @@ class dataBankController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { $this->validate($request, [
+            'namaBank' => 'required|min:2',
+            'cabang' => 'required|min:4',
+            'flag' => 'required',
+        ]);
+
         $data = new dataBank();
        $data->nama_bank = $request->namaBank;
        $data->cabang = $request->cabang;

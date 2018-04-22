@@ -36,6 +36,12 @@ class dataJabatanController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'namaJabatan' => 'required|min:4',
+            'nominal' => 'required|min:4',
+            'flag' => 'required',
+        ]);
+
         $data = new dataJabatan();
        $data->nama_jabatan = $request->namaJabatan;
        $data->nominal = $request->nominal;
