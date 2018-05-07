@@ -4,7 +4,7 @@
     <title>Dashboard</title>
 @endsection
 @section('content')
-<div class="col-md-12">
+<div class="col-md-12" style="background:#fff;">
 	@if(Session::has('alert-success'))
 	<div class="alert alert-success">
 		<strong>{{ \Illuminate\Support\Facades\Session::get('alert-success') }}</strong>

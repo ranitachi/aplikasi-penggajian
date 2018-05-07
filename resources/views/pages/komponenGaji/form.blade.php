@@ -4,17 +4,16 @@
 		<form action="{{ route('komponen-gaji.store') }}" method="POST" >
 			{{ csrf_field() }}
 			<div class="form-group">
-				<label for="idKomponen">Id Komponen</label>
-				<input type="number" class="form-control" name="idKomponen" required="required">
+				<label for="idKomponen"> Komponen</label>
+				<input type="text" class="form-control" name="komponen" required="required">
 			</div>
 			<div class="form-group">
-				<label for="idBatchGaji">Id Batch Gaji</label>
-				<input type="number" class="form-control" name="idBatchGaji" required="required">
-			</div>
-			<div class="form-group">
-				<label for="nominal">Nominal</label>
-				<input type="number" class="form-control" name="nominal" required="required">
-			</div>
+                <label for="flag">Kategori</label>
+                <select class="form-control" name="tipe_komponen">
+                    <option value="1">Pemasukan</option>
+                    <option value="0">Potongan</option>
+                </select>
+            </div>
 			<div class="form-group">
                 <label for="flag">Flag</label>
                 <select class="form-control" name="flag">

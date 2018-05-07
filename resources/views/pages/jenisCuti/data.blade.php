@@ -11,16 +11,14 @@
 		</div>
 	</div>
 		<hr>
-		<table class="table">
+		<table class="table table-bordered">
 			<thead class="table-primary">
 				<tr>
 					<th>Jenis Cuti</th>
 					<th>Jumlah Hari</th>
-					<th>Tanggal Mulai</th>
-					<th>Tanggal Akhir</th>
+					
 					<th>Deskripsi</th>
-					<th>Berkas</th>
-					<th>Nip</th>
+					
 					<th>Flag</th>
 					<th>Action</th>
 				</tr>
@@ -30,11 +28,7 @@
 				<tr>
 					<th>{{ $datas->jenis_cuti }}</th>
 					<th>{{ $datas->jumlah_hari }}</th>
-					<th>{{ $datas->tanggal_mulai }}</th>
-					<th>{{ $datas->tanggal_akhir }}</th>
 					<th>{{ $datas->desc }}</th>
-					<th>{{ $datas->berkas }}</th>
-					<th>{{ $datas->nip }}</th>
 					<th>{{ $datas->flag }}</th>
 					<td>
 						<form action="{{ route('jenis-cuti.destroy', $datas->id) }}" method="POST">
@@ -73,20 +67,8 @@
                         <input type="number" class="form-control jumlahhari" name="jumlahHari" required="required">
                     </div>
                     <div class="form-group">
-                        <label for="tanggalMulai">Tanggal Mulai</label>
-                        <input type="date" class="form-control tanggalmulai" name="tanggalMulai" required="required">
-                    </div>
-                    <div class="form-group">
-                        <label for="tanggalAkhir">Tanggal Akhir</label>
-                        <input type="date" class="form-control tanggalakhir" name="tanggalAkhir" required="required">
-                    </div>
-                    <div class="form-group">
                         <label for="desc">Deskripsi</label>
                         <textarea class="form-control desc" name="desc" required="required" style="resize: none;"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="nip">Nip</label>
-                        <input type="text" class="form-control nip" name="nip" required="required">
                     </div>
                     <div class="form-group">
                         <label for="flag">Flag</label>
@@ -113,19 +95,13 @@
         var button = $(event.relatedTarget)
         var jeniscuti = button.data('jeniscuti')
         var jumlahhari = button.data('jumlahhari')
-        var tanggalmulai = button.data('tanggalmulai')
-        var tanggalakhir = button.data('tanggalakhir')
         var desc = button.data('desc')
-        var nip = button.data('nip')
         var idcuti = button.data('idcuti')
         var modal = $(this)
 
         modal.find('.modal-body .jeniscuti').val(jeniscuti)
         modal.find('.modal-body .jumlahhari').val(jumlahhari)
-        modal.find('.modal-body .tanggalmulai').val(tanggalmulai)
-        modal.find('.modal-body .tanggalakhir').val(tanggalakhir)
         modal.find('.modal-body .desc').val(desc)
-        modal.find('.modal-body .nip').val(nip)
         modal.find('.modal-body .idcuti').val(idcuti)
     })
 </script>

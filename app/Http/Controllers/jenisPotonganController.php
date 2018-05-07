@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\jenisPotongan;
+use App\Model\jenisPotongan;
 
 class jenisPotonganController extends Controller
 {

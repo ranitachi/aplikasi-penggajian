@@ -1,7 +1,7 @@
 <div class="container-fluid">
 		<h2>Table Data Golongan</h2>
 		<hr>
-		<table class="table">
+		<table class="table table-bordered">
 			<thead class="table-primary">
 				<tr>
 					<th>Nama Golongan</th>

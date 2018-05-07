@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\jenisCuti;
+use App\Model\jenisCuti;
 
 class jenisCutiController extends Controller
 {
@@ -39,15 +39,7 @@ class jenisCutiController extends Controller
         $data = new jenisCuti();
        $data->jenis_cuti = $request->jenisCuti;
        $data->jumlah_hari = $request->jumlahHari;
-       $data->tanggal_mulai = $request->tanggalMulai;
-       $data->tanggal_akhir = $request->tanggalAkhir;
        $data->desc = $request->desc;
-       $berkas = $request->file('berkas');
-        $ext = $berkas->getClientOriginalExtension();
-        $newName = rand(100000,1001238912).".".$ext;
-        $berkas->move('uploads/file',$newName);
-        $data->berkas = $newName;
-       $data->nip = $request->nip;
        $data->flag = $request->flag;
        $data->save();
        return redirect()->route('jenis-cuti.index')->with('alert-success','Berhasil Menambahkan Jenis Cuti!');

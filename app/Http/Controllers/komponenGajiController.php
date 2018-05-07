@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\komponenGaji;
+use App\Model\komponenGaji;
 
 class komponenGajiController extends Controller
 {
@@ -37,11 +37,16 @@ class komponenGajiController extends Controller
     public function store(Request $request)
     {
         $data = new komponenGaji();
-       $data->id_komponen = $request->idKomponen;
-       $data->id_batch_gaji = $request->idBatchGaji;
-       $data->nominal = $request->nominal;
-       $data->flag = $request->flag;
-       $data->save();
+        // $data->id_komponen = $request->idKomponen;
+        // $data->id_batch_gaji = $request->idBatchGaji;
+        // $data->nominal = $request->nominal;
+        // $data->flag = $request->flag;
+        $data->komponen=$request->komponen;
+        $data->tipe_komponen=$request->tipe_komponen;
+        $data->flag=1;
+        $data->created_at=date('Y-m-d H:i:s');
+        $data->updated_at=date('Y-m-d H:i:s');
+        $data->save();
        return redirect()->route('komponen-gaji.index')->with('alert-success','Berhasil Menambahkan Komponen Gaji!');
     }
 
@@ -78,10 +83,14 @@ class komponenGajiController extends Controller
     {
         $ids = $request->idd;
         $datas = komponenGaji::where('id',$ids)->first();
-        $datas->id_komponen = $request->idKomponen;
-        $datas->id_batch_gaji = $request->idBatchGaji;
-        $datas->nominal = $request->nominal;
-        $datas->flag = $request->flag;
+        // $datas->id_komponen = $request->idKomponen;
+        // $datas->id_batch_gaji = $request->idBatchGaji;
+        // $datas->nominal = $request->nominal;
+        // $datas->flag = $request->flag;
+        $datas->komponen=$request->komponen;
+        $datas->tipe_komponen=$request->tipe_komponen;
+        $datas->flag=1;
+        $datas->updated_at=date('Y-m-d H:i:s');
         $datas->save();
         return redirect()->route('komponen-gaji.index')->with('alert-success','Berhasil diUpdate Komponen Gaji!');
     }

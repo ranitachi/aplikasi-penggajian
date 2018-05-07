@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\dataJabatan;
+use App\Model\dataJabatan;
 
 use Illuminate\Http\Request;
 

@@ -1,12 +1,11 @@
 <div class="container-fluid">
 		<h2>Table Data Komponen Gaji</h2>
 		<hr>
-		<table class="table">
+		<table class="table table-bordered">
 			<thead class="table-primary">
 				<tr>
-					<th>Id Komponen</th>
-					<th>Id Batch Gaji</th>
-					<th>Nominal</th>
+					<th>Komponen</th>
+					<th>Kategori</th>
 					<th>Flag</th>
 					<th>Action</th>
 				</tr>
@@ -14,15 +13,14 @@
 			<tbody>
 				@foreach($data as $datas)
 				<tr>
-					<th>{{ $datas->id_komponen }}</th>
-					<th>{{ $datas->id_batch_gaji }}</th>
-					<th>{{ $datas->nominal }}</th>
+					<th>{{ $datas->komponen }}</th>
+					<th>{!! $datas->tipe_komponen==1 ? '<span class="label label-success">Pemasukan</span>':'<span class="label label-warning">potongan</span>' !!}</th>
 					<th>{{ $datas->flag }}</th>
 					<td>
 						<form action="{{ route('komponen-gaji.destroy', $datas->id) }}" method="POST">
 							{{ csrf_field() }}
 							{{ method_field('DELETE') }}
-							<a href="#" data-toggle="modal" data-target="#exampleModal" data-idkomponen="{{$datas->id_komponen}}" data-idbatch="{{$datas->id_batch_gaji}}" data-nominal="{{$datas->nominal}}" data-idd="{{$datas->id}}" class="btn btn-sm btn-primary">Edit</a>
+							<a href="#" data-toggle="modal" data-target="#exampleModal" data-idkomponen="{{$datas->komponen}}" data-idd="{{$datas->id}}" class="btn btn-sm btn-primary">Edit</a>
 							<button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Yakin ingin menghapus data?')">Delete</button>
 						</form>
 					</td>
@@ -47,16 +45,15 @@
                     {{ method_field('PUT') }}
                     <input type="hidden" readonly="readonly" class="form-control idd" name="idd" required="required">
                     <div class="form-group">
-                        <label for="idKomponen">Id Komponen</label>
-                        <input type="number" class="form-control idkomponen" name="idKomponen" required="required">
+                        <label for="idKomponen">Komponen</label>
+                        <input type="text" class="form-control idkomponen" name="komponen" required="required">
                     </div>
                     <div class="form-group">
-                        <label for="idBatchGaji">Id Batch Gaji</label>
-                        <input type="number" class="form-control idbatch" name="idBatchGaji" required="required">
-                    </div>
-                    <div class="form-group">
-                        <label for="nominal">Nominal</label>
-                        <input type="number" class="form-control nominal" name="nominal" required="required">
+                        <label for="flag">Kategori</label>
+                        <select class="form-control" name="tipe_komponen">
+                            <option value="1">Pemasukan</option>
+                            <option value="0">Potongan</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="flag">Flag</label>

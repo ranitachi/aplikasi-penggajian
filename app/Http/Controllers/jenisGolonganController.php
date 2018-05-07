@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\jenisGolongan;
+use App\Model\jenisGolongan;
 
 class jenisGolonganController extends Controller
 {
@@ -93,8 +93,7 @@ class jenisGolonganController extends Controller
     public function destroy($id)
     {
         $datas = jenisGolongan::where('id',$id)->first();
-        $datas->flag = 0;
-        $datas->save();
+        $datas->delete();
         return redirect()->route('jenis-golongan.index')->with('alert-success','Berhasil diHapus Jenis Golongan!');
     }
 }
