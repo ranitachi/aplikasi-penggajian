@@ -36,6 +36,14 @@ class jenisCutiController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'jenisCuti' => 'required|min:4',
+            'jumlahHari' => 'required|min:4',
+            'desc' => 'required|min:20',
+            'nip' => 'required|min:4',
+            'flag' => 'required',
+        ]);
+
         $data = new jenisCuti();
        $data->jenis_cuti = $request->jenisCuti;
        $data->jumlah_hari = $request->jumlahHari;

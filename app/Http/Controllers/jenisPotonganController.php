@@ -36,6 +36,13 @@ class jenisPotonganController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nip' => 'required|min:4',
+            'desc' => 'required|min:20',
+            'nominal' => 'required|min:4',
+            'flag' => 'required',
+        ]);
+
          $data = new jenisPotongan();
        $data->nip = $request->nip;
        $data->desc = $request->desc;

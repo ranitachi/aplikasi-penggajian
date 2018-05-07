@@ -36,6 +36,13 @@ class komponenGajiController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'idKomponen' => 'required|min:4',
+            'idBatchGaji' => 'required|min:4',
+            'nominal' => 'required|min:4',
+            'flag' => 'required',
+        ]);
+
         $data = new komponenGaji();
         // $data->id_komponen = $request->idKomponen;
         // $data->id_batch_gaji = $request->idBatchGaji;
