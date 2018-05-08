@@ -5,8 +5,7 @@ namespace App\Model;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Karyawan extends Model
+class dataKontrak extends Model
 {
-    use SoftDeletes;
-    protected $table = 'master_pegawai';
+    protected $table = 'data_kontrak';
 }

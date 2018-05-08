@@ -27,3 +27,6 @@ Route::resource('jenis-golongan', 'jenisGolonganController');
 Route::resource('jabatan', 'dataJabatanController');
 Route::resource('jenis-potongan', 'jenisPotonganController');
 Route::resource('komponen-gaji', 'komponenGajiController');
+Route::resource('karyawan-tetap', 'karyawanTetapController');
+Route::resource('karyawan-kontrak', 'karyawanKontrakController');
+Route::resource('kontrak-karyawan', 'dataKontrakController');

@@ -37,9 +37,9 @@
 								<li>
                                     <a href="#"><i class="icon-users"></i> <span>Data Karyawan</span></a>
 									<ul>
-                                        <li><a href="{{url('karyawan/tetap')}}">Karyawan Tetap</a></li>
-                                        <li><a href="{{url('karyawan/kontak')}}">Karyawan Kontrak</a></li>
-                                        <li><a href="{{url('kontak-karyawan')}}">Data Kontrak Karyawan</a></li>
+                                        <li><a href="{{url('karyawan-tetap')}}">Karyawan Tetap</a></li>
+                                        <li><a href="{{url('karyawan-kontrak')}}">Karyawan Kontrak</a></li>
+                                        <li><a href="{{url('kontrak-karyawan')}}">Data Kontrak Karyawan</a></li>
 									</ul>
 								</li>
                                
